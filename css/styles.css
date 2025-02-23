@@ -1,4 +1,44 @@
-*{
-    background-color: black;
+body {
+    background-color: #111;
     color: white;
+    font-family: 'Arial', sans-serif;
+}
+
+/* HERO */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('background.jpg') center/cover no-repeat;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* GALERÍA */
+.gallery img {
+    width: 100%;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.gallery img:hover {
+    transform: scale(1.05);
+}
+
+/* CONTACTO */
+.contact-section {
+    padding: 50px 0;
+    background: #222;
+}
+
+.contact-section .btn {
+    font-size: 1.2rem;
+    padding: 10px 20px;
 }
