@@ -19,6 +19,31 @@ body {
     font-weight: bold;
     text-transform: uppercase;
 }
+.carousel-container {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    white-space: nowrap;
+}
+
+.carousel {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.1s linear;
+    will-change: transform;
+}
+
+.carousel img {
+    width: 200px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.carousel img:hover {
+    transform: scale(1.1);
+}
+
 
 /* GALERÍA */
 .gallery img {

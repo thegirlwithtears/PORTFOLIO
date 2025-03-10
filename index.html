@@ -5,39 +5,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Diseñadora Gráfica</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-    <!-- Sección Hero -->
-    <header class="hero">
-        <div class="container text-center">
-            <h1 class="animated-text"></h1>
-            <p>Creatividad. Diseño. Innovación.</p>
-            <a href="#portfolio" class="btn btn-light mt-3">Ver Trabajos</a>
+    <!-- Sección Hero con efecto Parallax -->
+    <header class="hero d-flex align-items-center justify-content-center text-center">
+        <div class="container text-white">
+            <h1 class="animated-text">Bienvenido a mi Mundo Creativo</h1>
+            <p class="fade-in">Creatividad. Diseño. Innovación.</p>
+            <a href="#portfolio" class="btn btn-light btn-lg mt-3 pulse">Ver Trabajos</a>
         </div>
     </header>
 
-    <!-- Sección Galería -->
+    <!-- Carrusel de Imágenes -->
     <section id="portfolio" class="container my-5">
-        <h2 class="text-center">Mi Trabajo</h2>
-        <div class="row gallery">
-            <div class="col-md-4"><img src="img1.jpg" class="img-fluid" alt="Diseño 1"></div>
-            <div class="col-md-4"><img src="img2.jpg" class="img-fluid" alt="Diseño 2"></div>
-            <div class="col-md-4"><img src="img3.jpg" class="img-fluid" alt="Diseño 3"></div>
+        <h2 class="text-center mb-4">Mi Trabajo</h2>
+        <div class="carousel-container">
+            <div class="carousel">
+                <img src="imedia/img/0f50226ffe6d9b5d06d3834b954a88f0.jpg" class="carousel-img" >
+                <img src="media/img/1efbf41fe8b38a068f27acb0e02f7243.jpg" class="carousel-img">
+                <img src="media/img/2017JR7507_jpg_l.jpg" class="carousel-img">
+                <img src="imedia/img/0f50226ffe6d9b5d06d3834b954a88f0.jpg" class="carousel-img" >
+                <img src="media/img/1efbf41fe8b38a068f27acb0e02f7243.jpg" class="carousel-img">
+                <img src="media/img/2017JR7507_jpg_l.jpg" class="carousel-img">
+                <img src="media/img/8752b68a1f45ec28e68f1eb75f8d17ee.jpg" class="carousel-img">
+                
+            </div>
         </div>
     </section>
 
-    <!-- Sección Contacto -->
-    <section id="contacto" class="contact-section text-center">
+    <!-- Sección Contacto con efectos -->
+    <section id="contacto" class="contact-section text-center py-5 text-white">
         <div class="container">
             <h2>Contacto</h2>
             <p>¡Hablemos sobre tu próximo proyecto!</p>
-            <a href="mailto:correo@example.com" class="btn btn-light">Escríbeme</a>
+            <a href="mailto:correo@example.com" class="btn btn-light btn-lg pulse">Escríbeme</a>
+            <div class="social-icons mt-4">
+                <a href="#" class="me-3"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="me-3"><i class="fab fa-behance"></i></a>
+            </div>
         </div>
     </section>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="js/script.js"></script>
+   
 </body>
 </html>
