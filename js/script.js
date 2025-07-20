@@ -1,11 +1,30 @@
-// Inicializar Locomotive Scroll
-const scroll = new LocomotiveScroll({
-    el: document.querySelector("[data-scroll-container]"),
-    smooth: true
-});
+// Simple typing effect for the hero section
+const textElement = document.getElementById('type-text');
+const words = ['rebellious', 'real', 'raw', 'redefined'];
+let wordIndex = 0;
+let charIndex = 2;
+let typing = true;
 
-// Inicializar AOS (Animaciones al hacer scroll)
-AOS.init({
-    duration: 1000, // Duración de las animaciones
-    once: true, // Solo animar una vez
-});
+function typeEffect() {
+  if (typing) {
+    if (charIndex < words[wordIndex].length) {
+      textElement.textContent += words[wordIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(typeEffect, 150);
+    } else {
+      typing = false;
+      setTimeout(typeEffect, 1500);
+    }
+  } else {
+    if (charIndex > 2) {
+      textElement.textContent = words[wordIndex].substring(0, --charIndex);
+      setTimeout(typeEffect, 50);
+    } else {
+      typing = true;
+      wordIndex = (wordIndex + 1) % words.length;
+      setTimeout(typeEffect, 500);
+    }
+  }
+}
+
+document.addEventListener('DOMContentLoaded', typeEffect);
