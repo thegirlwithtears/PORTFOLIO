@@ -3,55 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Diseñadora Gráfica</title>
+    <title>Tóxico - Revista de Arte Emergente</title>
+    
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Locomotive Scroll -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll/dist/locomotive-scroll.min.css">
+    
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-scroll-container>
 
-    <!-- Sección Hero con efecto Parallax -->
-    <header class="hero d-flex align-items-center justify-content-center text-center">
-        <div class="container text-white">
-            <h1 class="animated-text">Bienvenido a mi Mundo Creativo</h1>
-            <p class="fade-in">Creatividad. Diseño. Innovación.</p>
-            <a href="#portfolio" class="btn btn-light btn-lg mt-3 pulse">Ver Trabajos</a>
-        </div>
-    </header>
-
-    <!-- Carrusel de Imágenes -->
-    <section id="portfolio" class="container my-5">
-        <h2 class="text-center mb-4">Mi Trabajo</h2>
-        <div class="carousel-container">
-            <div class="carousel">
-                <img src="imedia/img/0f50226ffe6d9b5d06d3834b954a88f0.jpg" class="carousel-img" >
-                <img src="media/img/1efbf41fe8b38a068f27acb0e02f7243.jpg" class="carousel-img">
-                <img src="media/img/2017JR7507_jpg_l.jpg" class="carousel-img">
-                <img src="imedia/img/0f50226ffe6d9b5d06d3834b954a88f0.jpg" class="carousel-img" >
-                <img src="media/img/1efbf41fe8b38a068f27acb0e02f7243.jpg" class="carousel-img">
-                <img src="media/img/2017JR7507_jpg_l.jpg" class="carousel-img">
-                <img src="media/img/8752b68a1f45ec28e68f1eb75f8d17ee.jpg" class="carousel-img">
-                
-            </div>
-        </div>
-    </section>
-
-    <!-- Sección Contacto con efectos -->
-    <section id="contacto" class="contact-section text-center py-5 text-white">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <h2>Contacto</h2>
-            <p>¡Hablemos sobre tu próximo proyecto!</p>
-            <a href="mailto:correo@example.com" class="btn btn-light btn-lg pulse">Escríbeme</a>
-            <div class="social-icons mt-4">
-                <a href="#" class="me-3"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="me-3"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="me-3"><i class="fab fa-behance"></i></a>
+            <a class="navbar-brand" href="#">TÓXICO</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#articulos">Artículos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                </ul>
             </div>
         </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero" data-scroll>
+        <h1 class="display-3 fw-bold" data-aos="fade-up">CREATIVE COACHING AND CONSULTING FOR THE NEW AGE ENTREPRENEUR</h1>
+    </section>
+    
+    <!-- Grid Section -->
+    <section class="grid-section">
+        <div data-aos="fade-right"><p>Construir marcas con alma y datos estratégicos</p></div>
+        <div data-aos="fade-up"><p>Flujos de trabajo claros y sistemáticos</p></div>
+        <div data-aos="fade-left"><p>Impulsar negocios con pasos accionables</p></div>
+    </section>
+    
+    <!-- Split Section -->
+    <section class="split-section">
+        <img src="media/img/2000.jpg" alt="Arte emergente" data-scroll data-scroll-speed="2">
+        <div class="split-text" data-aos="fade-left">
+            <h2>Tienes el poder de construir un negocio increíble y una vida increíble.</h2>
+            <p>Tu negocio debe trabajar para ti, no al revés...</p>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <p data-aos="zoom-in">VER NUESTRAS OPCIONES DE COACHING</p>
+        <p data-aos="zoom-in">COMPRAR CURSOS ONLINE</p>
     </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="js/script.js"></script>
-   
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll/dist/locomotive-scroll.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="script.js"></script>
+
 </body>
 </html>
