@@ -1,111 +1,120 @@
-body{
-  background-color: #ff5a5f;
+body {
+  background-color: white;
 }
-:root{
-  --center-size: 420px; /* tamaño del contenedor/imagen central */
-  --item-size: 86px;    /* tamaño de los elementos desplegables */
-  --expanded-radius: 160px; /* radio del círculo */
+
+:root {
+  --center-size: 420px;
+  --item-size: 86px;
+  --expanded-radius: 160px;
   --accent: #ff5a5f;
 }
 
-/* Contenedor general */
-.interactive-portfolio{
+/* Contenedor central */
+.interactive-portfolio {
   width: var(--center-size);
-  border-radius: 18px;
   overflow: visible;
+  position: relative;
+  border: none;
+  box-shadow: none;
 }
 
-/* Botón/imagen central */
-.center-photo{
-  display:block;
-  width:100%;
-  height:100%;
-  background:transparent;
-  cursor:pointer;
-  position:relative;
+/* Botón/video central */
+.center-photo {
+  border: none;
+  padding: 0;
+  background: transparent;
+  display: block;
+  outline: none;
+  -webkit-appearance: none;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  position: relative;
 }
-.center-photo img{
-  display:block;
-  width:100%;
-  height:auto;
-  border-radius:18px;
-  object-fit:cover;
+
+.center-photo video {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  object-fit: cover;
+  display: block;
   filter: saturate(0.95) contrast(1.02);
 }
 
-/* Overlay con texto centrado */
-.center-overlay{
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  pointer-events:none;
-}
-.center-text{
-  background:rgba(0,0,0,0.45);
-  color:white;
-  padding:10px 16px;
-  border-radius:999px;
-  font-weight:600;
-  font-size:1.1rem;
-  letter-spacing:0.03em;
+/* Overlay con texto */
+.center-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
 }
 
-/* Elementos del porfolio (inicialmente ocultos, superpuestos en el centro) */
-.portfolio-item{
+.center-text {
+  background: rgba(0,0,0,0.45);
+  color: white;
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.03em;
+}
+
+/* Elementos del portafolio */
+.portfolio-item {
   --size: var(--item-size);
-  width:var(--size);
-  height:var(--size);
-  border-radius:14px;
-  position:absolute;
-  left:50%;
-  top:50%;
-  transform: translate(-50%,-50%) scale(0.001);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  gap:6px;
-  background:rgba(255,255,255,0.95);
-  box-shadow:0 6px 18px rgba(15,15,15,0.12);
-  transition: box-shadow .18s ease;
-  cursor:pointer;
-  opacity:0;
-  padding:10px;
-  text-align:center;
-  user-select:none;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 14px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.001);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 6px;
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 6px 18px rgba(15,15,15,0.12);
+  cursor: pointer;
+  opacity: 0;
+  padding: 10px;
+  text-align: center;
+  user-select: none;
+  transition: box-shadow 0.18s ease;
 }
 
-/* icono y etiqueta */
-.portfolio-item i{
-  display:block;
+.portfolio-item i {
+  display: block;
 }
-.item-label{
-  display:block;
-  font-size:0.78rem;
-  color:#333;
+.item-label {
+  display: block;
+  font-size: 0.78rem;
+  color: #333;
 }
 
-/* hover accesible */
 .portfolio-item:focus,
-.portfolio-item:hover{
-  transform: translate(-50%,-50%) scale(1.02);
-  box-shadow:0 10px 26px rgba(15,15,15,0.18);
+.portfolio-item:hover {
+  transform: translate(-50%, -50%) scale(1.02);
+  box-shadow: 0 10px 26px rgba(15,15,15,0.18);
   outline: none;
 }
 
-/* pequeño indicador cuando está abierto */
-.interactive-portfolio.open .center-photo img{
+/* Animación cuando se abre */
+.interactive-portfolio.open .center-photo video {
   filter: saturate(1.05) brightness(0.98);
 }
 
-/* Responsivo — reduce tamaños en pantallas pequeñas */
-@media (max-width: 576px){
-  :root{
+/* Responsive */
+@media (max-width: 576px) {
+  :root {
     --center-size: 300px;
     --item-size: 64px;
     --expanded-radius: 120px;
   }
-  .interactive-portfolio{ width: var(--center-size); }
+  .interactive-portfolio {
+    width: var(--center-size);
+  }
 }

@@ -14,74 +14,72 @@
   <!-- Tu CSS -->
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="bg-light">
+<body>
 
   <main class="container py-5">
     <h1 class="text-center mb-4">Porfolio — Diseñadora Gráfica</h1>
 
     <section class="d-flex justify-content-center">
-      <!-- Card central -->
-      <div class="card shadow-lg interactive-portfolio" id="portfolio">
-        <div class="card-body p-0 position-relative">
-          <!-- Imagen central (elemento del medio) -->
-          <button id="centerBtn" class="center-photo btn p-0 border-0" aria-expanded="false" aria-label="Abrir elementos del porfolio">
-            <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder"
-                 alt="Foto central - portafolio" class="d-block" />
-            <div class="center-overlay">
-              <div class="center-text">Mi trabajo</div>
-            </div>
-          </button>
-
-          <!-- Elementos escondidos -->
-          <div class="portfolio-item" data-angle="270" data-label="Branding" tabindex="0">
-            <i data-lucide="palette"></i>
-            <span class="item-label">Branding</span>
+      <!-- Contenedor central -->
+      <div class="interactive-portfolio" id="portfolio">
+        <!-- Video central -->
+        <button id="centerBtn" class="center-photo btn" aria-expanded="false" aria-label="Abrir elementos del porfolio">
+          <video autoplay muted loop playsinline>
+            <source src="media/video/watermarked-c7d6f4f9-1139-4d33-9e82-ede24f2d7f42.mp4" type="video/mp4">
+            Tu navegador no soporta video.
+          </video>
+          <div class="center-overlay">
+            <div class="center-text">Mi trabajo</div>
           </div>
+        </button>
 
-          <div class="portfolio-item" data-angle="330" data-label="Ilustración" tabindex="0">
-            <i data-lucide="pen-tool"></i>
-            <span class="item-label">Ilustración</span>
-          </div>
+        <!-- Elementos del portafolio -->
+        <div class="portfolio-item" data-angle="270" data-label="Branding" tabindex="0">
+          <i data-lucide="palette"></i>
+          <span class="item-label">Branding</span>
+        </div>
 
-          <div class="portfolio-item" data-angle="30" data-label="Packaging" tabindex="0">
-            <i data-lucide="box"></i>
-            <span class="item-label">Packaging</span>
-          </div>
+        <div class="portfolio-item" data-angle="330" data-label="Ilustración" tabindex="0">
+          <i data-lucide="pen-tool"></i>
+          <span class="item-label">Ilustración</span>
+        </div>
 
-          <div class="portfolio-item" data-angle="90" data-label="Editorial" tabindex="0">
-            <i data-lucide="book-open"></i>
-            <span class="item-label">Editorial</span>
-          </div>
+        <div class="portfolio-item" data-angle="30" data-label="Packaging" tabindex="0">
+          <i data-lucide="box"></i>
+          <span class="item-label">Packaging</span>
+        </div>
 
-          <div class="portfolio-item" data-angle="150" data-label="Motion" tabindex="0">
-            <i data-lucide="play"></i>
-            <span class="item-label">Motion</span>
-          </div>
+        <div class="portfolio-item" data-angle="90" data-label="Editorial" tabindex="0">
+          <i data-lucide="book-open"></i>
+          <span class="item-label">Editorial</span>
+        </div>
 
-          <div class="portfolio-item" data-angle="210" data-label="Web" tabindex="0">
-            <i data-lucide="laptop"></i>
-            <span class="item-label">Web</span>
-          </div>
+        <div class="portfolio-item" data-angle="150" data-label="Motion" tabindex="0">
+          <i data-lucide="play"></i>
+          <span class="item-label">Motion</span>
+        </div>
 
-        </div> <!-- .card-body -->
-      </div> <!-- .card -->
+        <div class="portfolio-item" data-angle="210" data-label="Web" tabindex="0">
+          <i data-lucide="laptop"></i>
+          <span class="item-label">Web</span>
+        </div>
+
+      </div>
     </section>
 
-    <p class="text-center mt-4 text-muted small">Haz click en la foto central para desplegar los elementos. Pulsa otra vez para esconderlos.</p>
+    <p class="text-center mt-4 text-muted small">
+      Haz click en el video central para desplegar los elementos. Pulsa otra vez para esconderlos.
+    </p>
   </main>
 
   <!-- GSAP (animaciones) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
   <!-- Tu JS -->
   <script src="js/script.js"></script>
-
   <!-- Inicializar Lucide -->
-  <script>
-    lucide.createIcons();
-  </script>
+  <script>lucide.createIcons();</script>
+
 </body>
 </html>
