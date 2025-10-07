@@ -1,0 +1,59 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #fff;
+  color: #333;
+  overflow-x: hidden;
+}
+
+.editorial-section {
+  min-height: 100vh;
+  background-attachment: fixed; /* fondo fijo */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  padding: 60px 0;
+}
+
+.editorial-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+/* Efecto inicial de foto */
+/* Efecto inicial de foto (primera imagen) */
+.editorial-item.first .image-wrapper {
+  transform: scale(1.3); /* más zoom para efecto dramático */
+  opacity: 0;
+  filter: blur(15px) brightness(0.7);
+}
+
+
+.image-wrapper {
+  flex: 0 0 50%;
+  transform: translateX(-100px);
+  opacity: 0;
+}
+
+.image-wrapper img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+.text-wrapper {
+  flex: 0 0 45%;
+  opacity: 0;
+}
+
+.text-wrapper h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.text-wrapper p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
