@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900">
+<rect width="1200" height="900" fill="#ebe9e4"/><rect width="420" height="900" fill="#484a47"/>
+<text x="55" y="160" fill="#ebe9e4" font-family="Arial" font-size="28">03</text><text x="500" y="220" fill="#252725" font-family="Georgia" font-size="110">MOOD</text>
+<text x="500" y="320" fill="#b8a5a4" font-family="Georgia" font-size="110" font-style="italic">BOARD</text>
+<circle cx="820" cy="580" r="210" fill="#aeb6b4"/><circle cx="820" cy="580" r="110" fill="#252725"/>
+<text x="500" y="810" fill="#484a47" font-family="monospace" font-size="18">CAMPAÑA / SISTEMA VISUAL</text></svg>
