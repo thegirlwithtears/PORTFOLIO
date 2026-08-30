@@ -1,30 +1,156 @@
-const projects = [
-  ["Proyecto Uno", "Identidad / Dirección de arte", "2026", "Una identidad con un lenguaje propio. Sustituye este texto por el contexto, la idea y las piezas principales del proyecto.", "assets/project-01.svg"],
-  ["Proyecto Dos", "Editorial / Publicación", "2025", "Un sistema editorial pensado para crear ritmo, contraste y una lectura memorable.", "assets/project-02.svg"],
-  ["Proyecto Tres", "Campaña / Sistema visual", "2025", "Una campaña flexible donde la tipografía y la imagen forman un pequeño universo visual.", "assets/project-03.svg"],
-  ["Proyecto Cuatro", "Packaging / Universo de marca", "2024", "Un proyecto de packaging donde el material y los detalles táctiles forman parte de la idea.", "assets/project-04.svg"],
-  ["Proyecto Cinco", "Digital / Experiencia", "2024", "Una experiencia digital centrada en la composición, el movimiento y la narración visual.", "assets/project-05.svg"]
-];
-const modal = document.querySelector('.project-modal');
-const openProject = (index) => {
-  const [title, category, year, description, image] = projects[index];
-  document.querySelector('.modal-number').textContent = `${String(index + 1).padStart(2, '0')} / 05`;
-  document.querySelector('.modal-title').textContent = title;
-  document.querySelector('.modal-description').textContent = description;
-  document.querySelector('.modal-meta').textContent = `${category} — ${year}`;
-  const modalImage = document.querySelector('.modal-image');
-  modalImage.src = image; modalImage.alt = title;
-  modal.classList.add('is-open'); modal.setAttribute('aria-hidden', 'false');
-};
-document.querySelectorAll('.project').forEach((card) => {
-  const show = () => openProject(Number(card.dataset.project));
-  card.querySelector('.project-image').addEventListener('click', show);
-  card.querySelector('.project-link').addEventListener('click', show);
-});
-const closeModal = () => { modal.classList.remove('is-open'); modal.setAttribute('aria-hidden', 'true'); };
-document.querySelector('.modal-close').addEventListener('click', closeModal);
-document.querySelector('.modal-backdrop').addEventListener('click', closeModal);
-document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeModal(); });
-const toggle = document.querySelector('.menu-toggle'); const nav = document.querySelector('.site-nav');
-toggle.addEventListener('click', () => { const open = nav.classList.toggle('is-open'); toggle.setAttribute('aria-expanded', open); });
-nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => { nav.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); }));
+/* --- original: accordion + filters --- */
+document.querySelectorAll(".row").forEach(x=>x.addEventListener("click",()=>x.parentElement.classList.toggle("open")));
+document.querySelectorAll(".filters button").forEach(b=>b.addEventListener("click",()=>{
+  document.querySelectorAll(".filters button").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");
+  let f=b.dataset.filter;
+  document.querySelectorAll(".project").forEach(p=>{
+    p.style.display=f==="all"||p.dataset.type.includes(f)?"block":"none";
+    p.classList.remove("open");
+  });
+}));
+
+/* --- custom cursor: a small dot + a lagging ring, desktop only --- */
+(function(){
+  const isFine=window.matchMedia("(hover:hover) and (pointer:fine)").matches;
+  if(!isFine) return;
+
+  const dot=document.createElement("div");
+  dot.className="cursor-dot";
+  dot.setAttribute("aria-hidden","true");
+
+  const ring=document.createElement("div");
+  ring.className="cursor-ring";
+  ring.setAttribute("aria-hidden","true");
+
+  const label=document.createElement("span");
+  label.className="cursor-label";
+  label.textContent="VER";
+  ring.appendChild(label);
+
+  document.body.append(dot,ring);
+
+  let mx=0,my=0,rx=0,ry=0;
+  window.addEventListener("mousemove",e=>{
+    mx=e.clientX;my=e.clientY;
+    dot.style.transform=`translate(${mx}px,${my}px) translate(-50%,-50%)`;
+  });
+
+  (function loop(){
+    rx+=(mx-rx)*.18;
+    ry+=(my-ry)*.18;
+    ring.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;
+    requestAnimationFrame(loop);
+  })();
+
+  document.querySelectorAll("a,button,.row").forEach(el=>{
+    el.addEventListener("mouseenter",()=>document.body.classList.add("cursor-hover"));
+    el.addEventListener("mouseleave",()=>document.body.classList.remove("cursor-hover"));
+  });
+
+  document.querySelectorAll(".main-img").forEach(el=>{
+    el.addEventListener("mouseenter",()=>document.body.classList.add("cursor-view"));
+    el.addEventListener("mouseleave",()=>document.body.classList.remove("cursor-view"));
+  });
+})();
+
+/* --- reveal on scroll: classes added here, no HTML edits needed --- */
+(function(){
+  const targets=document.querySelectorAll(".project,.head,.about-grid>*,.contact>*");
+  targets.forEach(el=>el.classList.add("reveal"));
+
+  if(!("IntersectionObserver" in window)){
+    targets.forEach(el=>el.classList.add("in-view"));
+    return;
+  }
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add("in-view");
+        io.unobserve(entry.target);
+      }
+    });
+  },{threshold:.15});
+  targets.forEach(el=>io.observe(el));
+})();
+
+/* --- subtle magnetic pull on nav links, filters and logo --- */
+(function(){
+  const isFine=window.matchMedia("(hover:hover) and (pointer:fine)").matches;
+  if(!isFine) return;
+
+  document.querySelectorAll("nav a,.filters button,.logo").forEach(el=>{
+    el.addEventListener("mousemove",e=>{
+      const r=el.getBoundingClientRect();
+      const x=e.clientX-r.left-r.width/2;
+      const y=e.clientY-r.top-r.height/2;
+      el.style.transform=`translate(${x*.3}px,${y*.4}px)`;
+    });
+    el.addEventListener("mouseleave",()=>{el.style.transform="";});
+  });
+})();
+/* --- pantalla de carga (línea) + animación de escritura del nombre --- */
+(function(){
+  const line1=document.getElementById('typeLine1');
+  const line2=document.getElementById('typeLine2');
+  const loader=document.getElementById('loader');
+  const loaderLine=document.getElementById('loaderLine');
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function typeName(){
+    if(!line1||!line2) return;
+    const word1='JULIA', word2='FERNÁNDEZ';
+
+    if(reduced){
+      line1.textContent=word1;
+      line2.textContent=word2;
+      return;
+    }
+
+    const speed=90, pause=250;
+    let i=0,j=0;
+    line1.classList.add('typing');
+
+    function typeWord1(){
+      if(i<word1.length){
+        line1.textContent+=word1[i];
+        i++;
+        setTimeout(typeWord1,speed);
+      } else {
+        line1.classList.remove('typing');
+        setTimeout(function(){
+          line2.classList.add('typing');
+          typeWord2();
+        },pause);
+      }
+    }
+
+    function typeWord2(){
+      if(j<word2.length){
+        line2.textContent+=word2[j];
+        j++;
+        setTimeout(typeWord2,speed);
+      } else {
+        setTimeout(function(){line2.classList.remove('typing')},600);
+      }
+    }
+
+    typeWord1();
+  }
+
+  if(!loader || reduced){
+    if(loader) loader.remove();
+    document.body.classList.remove('loading');
+    typeName();
+    return;
+  }
+
+  document.body.classList.add('loading');
+
+setTimeout(function(){
+    loader.classList.add('open');
+    document.body.classList.remove('loading');
+    typeName();
+    setTimeout(function(){loader.remove()},900);
+  },800);
+})();
