@@ -56,7 +56,20 @@ nav a:hover,.filters button:hover,.filters .active{color:var(--pink)}
 .head h2{font:700 clamp(3rem,7vw,7rem)/.8 "DM Sans",sans-serif;letter-spacing:-.08em;margin:0}
 .filters{display:flex;gap:20px;margin-bottom:18px;overflow:auto}
 .filters button{border:0;background:none;padding:0;cursor:pointer;white-space:nowrap;display:inline-block}
-
+.gallery.short-layout{display:flex;flex-direction:column;gap:14px;padding:0 0 45px}
+.short-hero{width:100%;aspect-ratio:16/9;object-fit:cover}
+.short-photos{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.short-photos img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.short-video video{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:#111}
+.short-reels{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.short-reels video{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;background:#111}
+.gallery.short-layout p{font-size:13px;line-height:1.5;max-width:500px;margin-top:4px}
+.gallery.reel-layout{display:flex;flex-direction:column;gap:14px;padding:0 0 45px}
+.reel-photo{width:100%;aspect-ratio:16/9;object-fit:cover}
+.reel-row{display:flex;gap:16px;align-items:flex-end; align-content: space-between;}
+.reel-row video{width:370px;aspect-ratio:9/16;object-fit:cover;display:block;background:#111;flex-shrink:0}
+.reel-row.horizontal video{width:100%;aspect-ratio:16/9;max-width:100%}
+.reel-row p{font-size:13px;line-height:1.6;color:var(--muted);margin:0;padding-top:4px}
 .row{width:100%;display:grid;grid-template-columns:6% 1fr 22% 10% 2%;align-items:center;text-align:left;border:0;border-top:1px solid var(--line);background:none;padding:18px 0;cursor:pointer}
 .project:last-child .row{border-bottom:1px solid var(--line)}
 .row strong{font:500 19px "DM Sans",sans-serif;letter-spacing:-.03em}
@@ -68,14 +81,24 @@ nav a:hover,.filters button:hover,.filters .active{color:var(--pink)}
 .main-img{width:100%;max-height:70vh;object-fit:cover}
 .thumbs{display:flex;flex-direction:column;gap:8px}
 .thumbs img{width:100%;aspect-ratio:1.3;object-fit:cover}
-.gallery p{font-size:13px;line-height:1.5;max-width:500px}
-
+.project.open .gallery{max-height:3200px;opacity:1}
+.gallery.mockup-layout{display:flex;flex-direction:column;gap:34px;padding:0 0 45px}
+.mockup-hero{width:100%;aspect-ratio:4/3;object-fit:cover}
+.mockup-group{display:flex;flex-direction:column;gap:10px}
+.mockup-label{font:10px "DM Mono",monospace;letter-spacing:.05em;color:var(--pink);text-transform:uppercase}
+.mockup-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px}
+.mockup-grid img{width:100%;aspect-ratio:4/3;object-fit:cover}
 .about{margin-top:150px;padding-bottom:150px}
-.about-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:30px;font-size:14px;line-height:1.5}
-.about-grid img{width:100%;aspect-ratio:1;object-fit:cover}
-
+.about-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:60px;align-items:start}
+.about-photo{width:100%;aspect-ratio:3/4;object-fit:cover}
+.about-text{display:flex;flex-direction:column;gap:20px;padding-top:6px}
+.about-title{font:400 clamp(2.2rem,5vw,3.6rem) "Tell Us Pangaia","DM Sans",sans-serif;letter-spacing:-.01em;margin:0}
+.about-text p{font-size:13.5px;line-height:1.7;color:var(--muted);max-width:430px;margin:0}
+.about-tools{font:11px "DM Mono",monospace;letter-spacing:.02em;color:var(--ink)!important}
+.about-btn{align-self:flex-start;font-size:13px;text-decoration:underline;text-underline-offset:3px;transition:color .25s ease}
+.about-btn:hover{color:var(--pink)}
 .contact{min-height:75vh;background:var(--pink);display:flex;flex-direction:column;justify-content:space-between;padding-bottom:25px}
-.mail{display:inline-block;font:700 clamp(2.5rem,8vw,9rem)/.8 "DM Sans",sans-serif;letter-spacing:-.08em;word-break:break-word;transition:font-family .2s ease,letter-spacing .3s ease,transform .5s cubic-bezier(.16,1,.3,1)}
+.mail{display:inline-block;font:700 clamp(2.5rem,6vw,9rem)/.8 "DM Sans",sans-serif;letter-spacing:-.08em;word-break:break-word;transition:font-family .2s ease,letter-spacing .3s ease,transform .5s cubic-bezier(.16,1,.3,1)}
 .mail:hover{font-family:"Tell Us Pangaia","DM Sans",sans-serif;letter-spacing:-.01em;text-transform:lowercase;transform:translateY(-4px)}
 .contact-info{display:flex;justify-content:space-between;gap:20px}
 
@@ -121,11 +144,14 @@ nav a:hover,.filters button:hover,.filters .active{color:var(--pink)}
   .row span:nth-of-type(2),.row span:nth-of-type(3){display:none}
   .row strong{font-size:16px}
   .gallery{padding-left:0;grid-template-columns:1fr}
+  .short-photos{grid-template-columns:1fr 1fr}
   .thumbs{display:grid;grid-template-columns:repeat(3,1fr);order:2}
-  .about{margin-top:100px}
-  .about-grid{display:flex;flex-direction:column}
-  .about-grid img{order:-1;width:70%;margin-left:auto}
+.about{margin-top:100px}
+.about-grid{grid-template-columns:1fr;gap:30px}
+.about-photo{aspect-ratio:4/3}
   .contact{min-height:70vh}
   .contact-info{flex-wrap:wrap;justify-content:flex-start}
   .contact-info span:last-child{width:100%}
+  .reel-row{flex-direction:column}
+.reel-row video{width:150px}
 }
