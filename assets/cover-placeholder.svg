@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 780">
-  <rect width="600" height="780" fill="#aeb6b4"/>
-  <path d="M0 120C140 45 185 168 292 85s177 14 308-56v751H0Z" fill="#484a47" opacity=".72"/>
-  <circle cx="305" cy="370" r="132" fill="#ebe9e4" opacity=".88"/>
-  <text x="300" y="665" fill="#ebe9e4" font-family="monospace" font-size="25" text-anchor="middle">TU FOTO</text>
-  <text x="300" y="700" fill="#ebe9e4" font-family="monospace" font-size="15" text-anchor="middle">PORTADA</text>
-</svg>
