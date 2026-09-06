@@ -87,7 +87,9 @@ nav a:hover,.filters button:hover,.filters .active{color:var(--pink)}
 .mockup-group{display:flex;flex-direction:column;gap:10px}
 .mockup-label{font:10px "DM Mono",monospace;letter-spacing:.05em;color:var(--pink);text-transform:uppercase}
 .mockup-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px}
-.mockup-grid img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.mockup-grid{align-items:start}
+.mockup-grid img{width:100%;height:auto;max-height:420px;object-fit:contain;display:block;margin:0 auto}
+.mockup-grid img.match{aspect-ratio:4/3;object-fit:cover;max-height:none}
 .about{margin-top:150px;padding-bottom:150px}
 .about-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:60px;align-items:start}
 .about-photo{width:100%;aspect-ratio:3/4;object-fit:cover}
@@ -101,7 +103,14 @@ nav a:hover,.filters button:hover,.filters .active{color:var(--pink)}
 .mail{display:inline-block;font:700 clamp(2.5rem,6vw,9rem)/.8 "DM Sans",sans-serif;letter-spacing:-.08em;word-break:break-word;transition:font-family .2s ease,letter-spacing .3s ease,transform .5s cubic-bezier(.16,1,.3,1)}
 .mail:hover{font-family:"Tell Us Pangaia","DM Sans",sans-serif;letter-spacing:-.01em;text-transform:lowercase;transform:translateY(-4px)}
 .contact-info{display:flex;justify-content:space-between;gap:20px}
-
+.lightbox{position:fixed;inset:0;background:rgba(17,17,17,.94);z-index:1001;display:none;align-items:center;justify-content:center;padding:40px;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:100%;max-height:100%;object-fit:contain}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);background:none;border:0;color:#f7f7f4;font-size:48px;line-height:1;cursor:pointer;padding:10px 16px;opacity:.7;transition:opacity .2s ease}
+.lightbox-nav:hover{opacity:1}
+.lightbox-nav.prev{left:10px}
+.lightbox-nav.next{right:10px}
+.gallery img{cursor:zoom-in}
 /* ---------------------------------------------------------------
    Scroll reveal — classes are added by script.js, no markup edits needed
 --------------------------------------------------------------- */
@@ -154,4 +163,7 @@ nav a:hover,.filters button:hover,.filters .active{color:var(--pink)}
   .contact-info span:last-child{width:100%}
   .reel-row{flex-direction:column}
 .reel-row video{width:150px}
+.short-video video{width:100%}
+.short-reels{grid-template-columns:1fr}
+.short-reels video{width:100%}
 }

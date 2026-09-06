@@ -1,5 +1,39 @@
 /* --- original: accordion + filters --- */
-document.querySelectorAll(".row").forEach(x=>x.addEventListener("click",()=>x.parentElement.classList.toggle("open")));
+document.querySelectorAll(".row").forEach(row=>{
+  row.addEventListener("click",()=>{
+    const project=row.parentElement;
+    const gallery=project.querySelector(".gallery");
+    const opening=!project.classList.contains("open");
+    project.classList.toggle("open");
+    if(!gallery) return;
+
+    if(opening){
+      gallery.style.maxHeight=gallery.scrollHeight+"px";
+
+      gallery.querySelectorAll("img").forEach(img=>{
+        if(!img.complete){
+          img.addEventListener("load",()=>{
+            if(project.classList.contains("open")){
+              gallery.style.maxHeight=gallery.scrollHeight+"px";
+            }
+          });
+        }
+      });
+
+      gallery.querySelectorAll("video").forEach(video=>{
+        if(video.readyState<1){
+          video.addEventListener("loadedmetadata",()=>{
+            if(project.classList.contains("open")){
+              gallery.style.maxHeight=gallery.scrollHeight+"px";
+            }
+          });
+        }
+      });
+    } else {
+      gallery.style.maxHeight=null;
+    }
+  });
+});
 document.querySelectorAll(".filters button").forEach(b=>b.addEventListener("click",()=>{
   document.querySelectorAll(".filters button").forEach(x=>x.classList.remove("active"));
   b.classList.add("active");
@@ -9,7 +43,52 @@ document.querySelectorAll(".filters button").forEach(b=>b.addEventListener("clic
     p.classList.remove("open");
   });
 }));
+/* --- lightbox con navegación siguiente/anterior --- */
+(function(){
+  const lightbox=document.getElementById('lightbox');
+  const lightboxImg=document.getElementById('lightboxImg');
+  const prevBtn=document.getElementById('lightboxPrev');
+  const nextBtn=document.getElementById('lightboxNext');
+  if(!lightbox) return;
 
+  let currentImages=[];
+  let currentIndex=0;
+
+  function show(){
+    const img=currentImages[currentIndex];
+    lightboxImg.src=img.src;
+    lightboxImg.alt=img.alt;
+  }
+  function openAt(images,index){
+    currentImages=images;
+    currentIndex=index;
+    show();
+    lightbox.classList.add('open');
+  }
+  function close(){
+    lightbox.classList.remove('open');
+    lightboxImg.src='';
+  }
+  function next(){currentIndex=(currentIndex+1)%currentImages.length;show();}
+  function prev(){currentIndex=(currentIndex-1+currentImages.length)%currentImages.length;show();}
+
+  document.querySelectorAll('.gallery').forEach(gallery=>{
+    const images=Array.from(gallery.querySelectorAll('img'));
+    images.forEach((img,i)=>{
+      img.addEventListener('click',()=>openAt(images,i));
+    });
+  });
+
+  nextBtn.addEventListener('click',e=>{e.stopPropagation();next();});
+  prevBtn.addEventListener('click',e=>{e.stopPropagation();prev();});
+  lightbox.addEventListener('click',e=>{if(e.target===lightbox) close();});
+  document.addEventListener('keydown',e=>{
+    if(!lightbox.classList.contains('open')) return;
+    if(e.key==='Escape') close();
+    if(e.key==='ArrowRight') next();
+    if(e.key==='ArrowLeft') prev();
+  });
+})();
 /* --- custom cursor: a small dot + a lagging ring, desktop only --- */
 (function(){
   const isFine=window.matchMedia("(hover:hover) and (pointer:fine)").matches;
