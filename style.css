@@ -70,12 +70,17 @@ nav a:hover,.filters button:hover,.filters .active{color:var(--pink)}
 .reel-row video{width:370px;aspect-ratio:9/16;object-fit:cover;display:block;background:#111;flex-shrink:0}
 .reel-row.horizontal video{width:100%;aspect-ratio:16/9;max-width:100%}
 .reel-row p{font-size:13px;line-height:1.6;color:var(--muted);margin:0;padding-top:4px}
+.reel-row.horizontal-pair{display:grid;grid-template-columns:1fr 1.6fr;gap:16px;align-items:stretch}
+.reel-row.horizontal-pair .reel-photo{width:100%;height:100%;object-fit:cover;display:block}
+.reel-row.horizontal-pair video{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;display:block;background:#111}
 .row{width:100%;display:grid;grid-template-columns:6% 1fr 22% 10% 2%;align-items:center;text-align:left;border:0;border-top:1px solid var(--line);background:none;padding:18px 0;cursor:pointer}
 .project:last-child .row{border-bottom:1px solid var(--line)}
 .row strong{font:500 19px "DM Sans",sans-serif;letter-spacing:-.03em}
 .row b{font-size:16px;font-weight:400;transition:transform .3s cubic-bezier(.16,1,.3,1)}
 .project.open .row b{transform:rotate(45deg)}
-
+.reel-row.match-height{display:flex;gap:16px;flex-wrap:wrap}
+.reel-row.match-height .reel-photo{height:480px;width:auto;display:block;object-fit:cover}
+.reel-row.match-height video{height:480px;width:auto;display:block;background:#111}
 .gallery{display:grid;grid-template-columns:1fr 220px;gap:18px;padding:0 0 45px 6%;max-height:0;opacity:0;overflow:hidden;transition:max-height .6s cubic-bezier(.16,1,.3,1),opacity .45s ease}
 .project.open .gallery{max-height:1400px;opacity:1}
 .main-img{width:100%;max-height:70vh;object-fit:cover}
@@ -91,14 +96,15 @@ nav a:hover,.filters button:hover,.filters .active{color:var(--pink)}
 .mockup-grid img{width:100%;height:auto;max-height:420px;object-fit:contain;display:block;margin:0 auto}
 .mockup-grid img.match{aspect-ratio:4/3;object-fit:cover;max-height:none}
 .about{margin-top:150px;padding-bottom:150px}
-.about-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:60px;align-items:start}
-.about-photo{width:100%;aspect-ratio:3/4;object-fit:cover}
+.about-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:60px;align-items:stretch}
+.about-photo{width:100%;height:100%;object-fit:cover}
 .about-text{display:flex;flex-direction:column;gap:20px;padding-top:6px}
 .about-title{font:400 clamp(2.2rem,5vw,3.6rem) "Tell Us Pangaia","DM Sans",sans-serif;letter-spacing:-.01em;margin:0}
 .about-text p{font-size:13.5px;line-height:1.7;color:var(--muted);max-width:430px;margin:0}
 .about-tools{font:11px "DM Mono",monospace;letter-spacing:.02em;color:var(--ink)!important}
 .about-btn{align-self:flex-start;font-size:13px;text-decoration:underline;text-underline-offset:3px;transition:color .25s ease}
 .about-btn:hover{color:var(--pink)}
+
 .contact{min-height:75vh;background:var(--pink);display:flex;flex-direction:column;justify-content:space-between;padding-bottom:25px}
 .mail{display:inline-block;font:700 clamp(2.5rem,6vw,9rem)/.8 "DM Sans",sans-serif;letter-spacing:-.08em;word-break:break-word;transition:font-family .2s ease,letter-spacing .3s ease,transform .5s cubic-bezier(.16,1,.3,1)}
 .mail:hover{font-family:"Tell Us Pangaia","DM Sans",sans-serif;letter-spacing:-.01em;text-transform:lowercase;transform:translateY(-4px)}
@@ -166,4 +172,7 @@ nav a:hover,.filters button:hover,.filters .active{color:var(--pink)}
 .short-video video{width:100%}
 .short-reels{grid-template-columns:1fr}
 .short-reels video{width:100%}
+.reel-row.match-height{flex-direction:column}
+.reel-row.match-height .reel-photo,.reel-row.match-height video{height:auto;width:100%}
+.reel-row.horizontal-pair{grid-template-columns:1fr}
 }
