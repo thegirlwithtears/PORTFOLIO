@@ -233,3 +233,13 @@ setTimeout(function(){
     setTimeout(function(){loader.remove()},900);
   },800);
 })();
+const loaderEl=document.getElementById('loader');
+  if(loaderEl){
+    setTimeout(()=>{
+      if(document.body.classList.contains('loading')){
+        loaderEl.classList.add('done');
+        document.body.classList.remove('loading');
+        setTimeout(()=>loaderEl.remove(),900);
+      }
+    },2500);
+  }
